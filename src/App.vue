@@ -1,5 +1,11 @@
 <script setup lang="ts"></script>
 
-<template>App</template>
+<template>
+  <div class="app-layout">App</div>
+</template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.app-layout {
+  margin: auto;
+}
+</style>
