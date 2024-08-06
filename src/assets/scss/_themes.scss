@@ -10,3 +10,12 @@ $dark: (
     app-container: 32px,
   ),
 );
+
+/// Define theme map as CSS custom variables
+@mixin define-theme($theme-map) {
+  @each $section, $map in $theme-map {
+    @each $key, $value in $map {
+      --theme-#{$section}-#{$key}: #{$value};
+    }
+  }
+}
