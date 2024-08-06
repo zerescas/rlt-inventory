@@ -3,14 +3,20 @@
 $dark: (
   color: (
     background: '#1d1d1d',
+    background-card: '#262626',
     background-skeleton-1: '#3C3C3C',
     background-skeleton-2: '#444444',
     background-skeleton-3: '#333333',
     text-primary: '#FFFFFF',
+    border: '#4D4D4D',
   ),
 
   radius: (
     border-base: '12px',
+  ),
+
+  width: (
+    border-base: 1px
   ),
 
   padding: (
