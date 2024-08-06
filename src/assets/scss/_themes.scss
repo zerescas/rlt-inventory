@@ -1,0 +1,12 @@
+@use 'sass:color';
+
+$dark: (
+  color: (
+    background: '#1d1d1d',
+    text-primary: '#FFFFFF',
+  ),
+
+  padding: (
+    app-container: 32px,
+  ),
+);
