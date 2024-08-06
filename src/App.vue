@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import InventorySidePanelSkeleton from './components/InventorySidePanelSkeleton.vue'
+import InventoryFooterSkeleton from './components/InventoryFooterSkeleton.vue'
 </script>
 
 <template>
   <div class="app-layout">
     <div class="inventory">
       <InventorySidePanelSkeleton style="grid-area: inventory-sidepanel" />
+      <InventoryFooterSkeleton style="grid-area: inventory-footer" />
     </div>
   </div>
 </template>
