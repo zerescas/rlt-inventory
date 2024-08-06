@@ -3,7 +3,14 @@
 $dark: (
   color: (
     background: '#1d1d1d',
+    background-skeleton-1: '#3C3C3C',
+    background-skeleton-2: '#444444',
+    background-skeleton-3: '#333333',
     text-primary: '#FFFFFF',
+  ),
+
+  radius: (
+    border-base: '12px',
   ),
 
   padding: (
