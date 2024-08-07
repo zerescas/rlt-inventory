@@ -6,9 +6,9 @@ import type { GridCellItemDetails } from '@/types/inventory/grid-cell-item-detai
 export const useInventoryItemDetailStore = defineStore('inventoryItemDetail', () => {
   const details = ref(
     new Map<GridCellItemCodes, GridCellItemDetails>([
-      ['green-box', { title: 'Green Box' }],
-      ['golden-box', { title: 'Golden Box' }],
-      ['blue-box', { title: 'Blue Box' }],
+      ['green-box', { title: 'Green Box', image: '/img/item/dark/green-box-small.png' }],
+      ['golden-box', { title: 'Golden Box', image: '/img/item/dark/golden-box-small.png' }],
+      ['blue-box', { title: 'Blue Box', image: '/img/item/dark/blur-box-small.png' }],
     ]),
   );
 
@@ -16,5 +16,9 @@ export const useInventoryItemDetailStore = defineStore('inventoryItemDetail', ()
     return details.value.get(code)?.title;
   }
 
-  return { details, getTitleByCode };
+  function getImageByCode(code: GridCellItemCodes) {
+    return details.value.get(code)?.image;
+  }
+
+  return { details, getTitleByCode, getImageByCode };
 });
