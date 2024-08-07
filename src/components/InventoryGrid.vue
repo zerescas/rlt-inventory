@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { swap} from '@formkit/drag-and-drop';
+import { swap } from '@formkit/drag-and-drop';
 import { useDragAndDrop } from '@formkit/drag-and-drop/vue';
 import InventoryGridCell from './InventoryGridCell.vue';
+import { usePreventDrag } from '@/composable/usePreventDrag';
 import type { GridCell } from '@/types/inventory/grid-cell';
 
 /* Init Drag'n Drop behavior */
 const [cellsRef, cells] = useDragAndDrop<GridCell>([], {
+  // Prevent drag if cell hasn't any item
+  ...usePreventDrag((targetData) => targetData.node.data.value?.item === null),
+
   dropZoneClass: 'dropzone',
   touchDropZoneClass: 'dropzone',
 
