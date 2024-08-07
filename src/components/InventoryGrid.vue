@@ -33,6 +33,15 @@ for (let i = 0; i < 25; i++) {
 
   cells.value.push(obj);
 }
+
+/* Cell selection */
+const selectedCell = ref<GridCell>();
+
+function selectCell(cell: GridCell) {
+  if (cell.item === null) return;
+
+  selectedCell.value = cell;
+}
 </script>
 
 <template>
@@ -42,6 +51,8 @@ for (let i = 0; i < 25; i++) {
         v-for="cell in cells"
         :key="cell.id"
         :cell
+        :class="{ selected: selectedCell === cell }"
+        @click="selectCell(cell)"
       />
     </div>
   </div>

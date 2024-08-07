@@ -25,6 +25,14 @@
 
     border: none;
     border-radius: 0;
+
+    &:hover {
+      background-color: var(--theme-color-background-card-hover);
+    }
+
+    &.selected {
+      background-color: var(--theme-color-background-card-selected);
+    }
     
     &.dropzone {
       background-color: white;
