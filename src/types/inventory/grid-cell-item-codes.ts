@@ -1,0 +1,1 @@
+export type GridCellItemCodes = 'green-box' | 'golden-box' | 'blue-box';
