@@ -1,0 +1,36 @@
+%base-card {
+  background-color: var(--theme-color-background-card);
+  border: var(--theme-width-border-base) solid var(--theme-color-border);
+  border-radius: var(--theme-radius-border-base);
+}
+
+.inventory-sidepanel-card {
+  @extend %base-card;
+
+  padding: 18px 14px;
+
+  .header,
+  .content,
+  .footer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .header {
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .content {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+}
+
+.inventory-footer-card {
+  @extend %base-card;
+
+  padding: var(--theme-padding-footer-skeleton);
+}
