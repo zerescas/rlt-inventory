@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AnimatedPlaceholder from './AnimatedPlaceholder.vue'
-import skeletonHeaderImage from '@/assets/img/sidepanel/skeleton.png'
+import AnimatedPlaceholder from './AnimatedPlaceholder.vue';
+import skeletonHeaderImage from '@/assets/img/sidepanel/skeleton.png';
 </script>
 
 <template>

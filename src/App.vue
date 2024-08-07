@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import InventorySidePanelSkeleton from './components/InventorySidePanelSkeleton.vue'
-import InventoryFooterSkeleton from './components/InventoryFooterSkeleton.vue'
+import InventorySidePanelSkeleton from './components/InventorySidePanelSkeleton.vue';
+import InventoryFooterSkeleton from './components/InventoryFooterSkeleton.vue';
 </script>
 
 <template>

@@ -3,13 +3,13 @@ defineProps({
   borderRadius: String,
   height: {
     type: String,
-    required: true
+    required: true,
   },
   width: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 </script>
 
 <template>
