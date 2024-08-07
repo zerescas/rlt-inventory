@@ -30,7 +30,7 @@ defineProps({
     var(--theme-color-background-skeleton-1) 90%
   );
   background-size: 200% 100%;
-  border-radius: var(--theme-radius-border-base);
+  border-radius: 4px;
   height: v-bind(height);
   width: v-bind(width);
 }

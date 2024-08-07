@@ -19,7 +19,7 @@ import InventoryFooterSkeleton from './components/InventoryFooterSkeleton.vue'
 
 .inventory {
   display: grid;
-  gap: var(--theme-gap-layout);
+  gap: 32px;
   grid-template: 500px 72px / 236px 525px;
   grid-template-areas:
     'inventory-sidepanel inventory-grid'
