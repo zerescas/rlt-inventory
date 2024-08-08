@@ -4,6 +4,74 @@
   border-radius: 12px;
 }
 
+.inventory-grid {
+  &-card {
+    @extend %base-card;
+
+    overflow: hidden;
+
+    .cells {
+      background-color: var(--theme-color-border);
+      display: grid;
+      gap: 1px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-rows: repeat(5, minmax(0, 1fr));
+      height: 100%;
+    }
+  }
+
+  &-cell-card {
+    @extend %base-card;
+
+    border: none;
+    border-radius: 0;
+
+    &:hover {
+      background-color: var(--theme-color-background-card-hover);
+    }
+
+    &.selected {
+      background-color: var(--theme-color-background-card-selected);
+    }
+    
+    &.dropzone {
+      background-color: white;
+    }
+
+    .item {
+      align-items: center;
+      color: #7d7d7d;
+      display: flex;
+      font-size: 18px;
+      height: 100%;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+
+      .image {
+        height: 54px;
+        width: 54px;
+      }
+
+      .count {
+        align-items: center;
+        border: 1px solid var(--theme-color-border);
+        border-bottom: none;
+        border-right: none;
+        border-top-left-radius: 6px;
+        bottom: 0;
+        display: flex;
+        font-size: 10px;
+        height: 16px;
+        justify-content: center;
+        position: absolute;
+        right: 0;
+        width: 16px;
+      }
+    }
+  }
+}
+
 .inventory-sidepanel-card {
   @extend %base-card;
 

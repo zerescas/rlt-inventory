@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import InventorySidePanelSkeleton from './components/InventorySidePanelSkeleton.vue';
+import InventoryGrid from './components/InventoryGrid.vue';
 import InventoryFooterSkeleton from './components/InventoryFooterSkeleton.vue';
 </script>
 
@@ -7,6 +8,7 @@ import InventoryFooterSkeleton from './components/InventoryFooterSkeleton.vue';
   <div class="app-layout">
     <div class="inventory">
       <InventorySidePanelSkeleton style="grid-area: inventory-sidepanel" />
+      <InventoryGrid style="grid-area: inventory-grid" />
       <InventoryFooterSkeleton style="grid-area: inventory-footer" />
     </div>
   </div>
