@@ -90,23 +90,18 @@
   &-item-details-modal {
     display: flex;
     flex-direction: column;
-    gap: 30px;
 
     .header,
-    .content,
-    .footer {
+    .content {
       align-items: center;
+      border-bottom: 1px solid var(--theme-color-border);
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .header,
-    .content {
-      border-bottom: 1px solid var(--theme-color-border);
-    }
-
     .header {
+      margin-bottom: 16px;
       padding-bottom: 30px;
 
       .item-image {
@@ -116,6 +111,7 @@
     }
 
     .content {
+      margin-bottom: 18px;
       padding-bottom: 24px;
 
       .item-title {
