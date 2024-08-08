@@ -4,6 +4,6 @@ import AnimatedPlaceholder from './AnimatedPlaceholder.vue';
 
 <template>
   <div class="inventory-footer-card skeleton">
-    <AnimatedPlaceholder width="100%" height="36px" />
+    <AnimatedPlaceholder width="100%" height="36px" borderRadius="12px" />
   </div>
 </template>
