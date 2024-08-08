@@ -4,6 +4,18 @@
   border-radius: 12px;
 }
 
+%base-card-backdrop-blur {
+  z-index: 0;
+
+  &::before {
+    backdrop-filter: blur(16px);
+    content: '';
+    inset: 0;
+    position: absolute;
+    z-index: -1;
+  }
+}
+
 .inventory-grid {
   &-card {
     @extend %base-card;
@@ -22,8 +34,8 @@
 
     .modal-card {
       @extend %base-card;
+      @extend %base-card-backdrop-blur;
 
-      backdrop-filter: blur(16px);
       background-color: var(--theme-color-background-card-semi-transparent);
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
