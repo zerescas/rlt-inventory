@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { swap } from '@formkit/drag-and-drop';
 import { useDragAndDrop } from '@formkit/drag-and-drop/vue';
 import InventoryGridCell from './InventoryGridCell.vue';
+import InventoryGridItemDetailsModal from './InventoryGridItemDetailsModal.vue';
 import { usePreventDrag } from '@/composable/usePreventDrag';
 import type { GridCell } from '@/types/inventory/grid-cell';
 
@@ -61,7 +62,7 @@ function selectCell(cell: GridCell) {
     </div>
 
     <div class="modal-card" v-if="selectedCell?.item">
-      Inventory Grid Modal Card
+      <InventoryGridItemDetailsModal :item="selectedCell?.item" />
     </div>
   </div>
 </template>
