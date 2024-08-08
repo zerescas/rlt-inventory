@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { swap } from '@formkit/drag-and-drop';
 import { useDragAndDrop } from '@formkit/drag-and-drop/vue';
 import InventoryGridCell from './InventoryGridCell.vue';
+import InventoryGridItemDetailsModal from './InventoryGridItemDetailsModal.vue';
 import { usePreventDrag } from '@/composable/usePreventDrag';
 import type { GridCell } from '@/types/inventory/grid-cell';
 
@@ -39,12 +40,26 @@ for (let i = 0; i < 25; i++) {
 }
 
 /* Cell selection */
-const selectedCell = ref<GridCell>();
+const selectedCell = ref<GridCell | null>();
 
 function selectCell(cell: GridCell) {
   if (cell.item === null) return;
 
   selectedCell.value = cell;
+}
+
+/* Cell actions */
+function deleteItemInCell(cell: GridCell, count: number) {
+  const cellToDelete = cells.value.find((c) => cell === c);
+
+  if (!cellToDelete || !cellToDelete.item) return;
+
+  cellToDelete.item.count -= count;
+  
+  if(cellToDelete.item.count <= 0) {
+    cellToDelete.item = null;
+    selectedCell.value = null;
+  }
 }
 </script>
 
@@ -58,6 +73,10 @@ function selectCell(cell: GridCell) {
         :class="{ selected: selectedCell === cell }"
         @click="selectCell(cell)"
       />
+    </div>
+
+    <div class="modal-card" v-if="selectedCell?.item">
+      <InventoryGridItemDetailsModal :cell="selectedCell" @deleteItem="deleteItemInCell" />
     </div>
   </div>
 </template>

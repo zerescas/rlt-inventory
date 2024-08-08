@@ -1,0 +1,10 @@
+@use 'sass:color';
+
+@mixin define-button($background-color, $background-color-hover, $color) {
+  background-color: var($background-color);
+  color: var($color);
+
+  &:hover {
+    background-color: var($background-color-hover);
+  }
+}

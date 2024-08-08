@@ -36,7 +36,7 @@ defineProps({
 }
 
 .custom-border-radius {
-  border-radius: v-bind(borderRadius);
+  border-radius: v-bind('borderRadius');
 }
 
 @keyframes bg-animate {

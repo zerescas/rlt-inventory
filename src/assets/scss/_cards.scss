@@ -1,7 +1,21 @@
+@use './variables' as *;
+
 %base-card {
   background-color: var(--theme-color-background-card);
   border: 1px solid var(--theme-color-border);
   border-radius: 12px;
+}
+
+%base-card-backdrop-blur {
+  z-index: 0;
+
+  &::before {
+    backdrop-filter: blur(16px);
+    content: '';
+    inset: 0;
+    position: absolute;
+    z-index: -1;
+  }
 }
 
 .inventory-grid {
@@ -9,6 +23,7 @@
     @extend %base-card;
 
     overflow: hidden;
+    position: relative;
 
     .cells {
       background-color: var(--theme-color-border);
@@ -17,6 +32,21 @@
       grid-template-columns: repeat(5, minmax(0, 1fr));
       grid-template-rows: repeat(5, minmax(0, 1fr));
       height: 100%;
+    }
+
+    .modal-card {
+      @extend %base-card;
+      @extend %base-card-backdrop-blur;
+
+      background-color: var(--theme-color-background-card-semi-transparent);
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      bottom: 0;
+      padding: $card-padding;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 250px;
     }
   }
 
@@ -33,7 +63,7 @@
     &.selected {
       background-color: var(--theme-color-background-card-selected);
     }
-    
+
     &.dropzone {
       background-color: white;
     }
@@ -67,6 +97,93 @@
         position: absolute;
         right: 0;
         width: 16px;
+      }
+    }
+  }
+
+  &-item-details-modal {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .header,
+    .content {
+      align-items: center;
+      border-bottom: 1px solid var(--theme-color-border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .header {
+      margin-bottom: 16px;
+      padding-bottom: 30px;
+
+      .item-image {
+        height: 130px;
+        width: 130px;
+      }
+    }
+
+    .content {
+      margin-bottom: 18px;
+      padding-bottom: 24px;
+
+      .item-title {
+        margin-bottom: 24px;
+      }
+
+      &.skeleton {
+        .item-title {
+          width: 100%;
+        }
+
+        .item-description {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          width: 100%;
+        }
+      }
+    }
+
+    .footer {
+      display: flex;
+      gap: 12px;
+
+      > * {
+        flex-grow: 1;
+      }
+
+      .delete-confirmation-card {
+        @extend %base-card;
+        @extend %base-card-backdrop-blur;
+
+        background-color: var(--theme-color-background-card-semi-transparent);
+        border-bottom: none;
+        border-left: none;
+        border-radius: 0;
+        border-right: none;
+        bottom: 0;
+        left: 0;
+        padding: 20px 21px;
+        position: absolute;
+        width: 100%;
+
+        .input {
+          margin-bottom: 20px;
+          width: 100%;
+        }
+
+        .buttons {
+          display: flex;
+          gap: 10px;
+
+          & > * {
+            flex-grow: 1;
+          }
+        }
       }
     }
   }
