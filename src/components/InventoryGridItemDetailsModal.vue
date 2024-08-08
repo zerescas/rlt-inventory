@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { PropType } from 'vue';
+import { ref, type PropType } from 'vue';
 import type { GridCell } from '@/types/inventory/grid-cell';
 import { useInventoryItemDetailStore } from '@/stores/inventoryItemDetail';
 import AnimatedPlaceholder from './AnimatedPlaceholder.vue';
 
 const inventoryItemDetailStore = useInventoryItemDetailStore();
 
-defineProps({
+const props = defineProps({
   cell: {
     type: Object as PropType<GridCell>,
     required: true,
@@ -14,8 +14,20 @@ defineProps({
 });
 
 const emit = defineEmits<{
-  (e: 'deleteItem', cell: GridCell): void;
+  (e: 'deleteItem', cell: GridCell, count: number): void;
 }>();
+
+const isShowDeleteConfirm = ref(false);
+const countToDelete = ref<number | string>('');
+
+function deleteItem() {
+  if (+countToDelete.value <= 0) return;
+
+  emit('deleteItem', props.cell, +countToDelete.value);
+
+  isShowDeleteConfirm.value = false;
+  countToDelete.value = '';
+}
 </script>
 
 <template>
@@ -39,9 +51,22 @@ const emit = defineEmits<{
     </div>
 
     <div class="footer">
-      <button class="button button-primary button-size-m" @click="emit('deleteItem', cell!)">
+      <button class="button button-primary button-size-m" @click="isShowDeleteConfirm = true">
         Удалить предмет
       </button>
+
+      <div v-if="isShowDeleteConfirm" class="delete-confirmation-card">
+        <input
+          class="input"
+          v-model="countToDelete"
+          placeholder="Введите количество"
+        />
+
+        <div class="buttons">
+          <button class="button button" @click="isShowDeleteConfirm = false">Отмена</button>
+          <button class="button button-primary" @click="deleteItem">Подтвердить</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>

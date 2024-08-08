@@ -49,13 +49,17 @@ function selectCell(cell: GridCell) {
 }
 
 /* Cell actions */
-function deleteItemInCell(cell: GridCell) {
+function deleteItemInCell(cell: GridCell, count: number) {
   const cellToDelete = cells.value.find((c) => cell === c);
 
-  if (!cellToDelete) return;
+  if (!cellToDelete || !cellToDelete.item) return;
 
-  cellToDelete.item = null;
-  selectedCell.value = null;
+  cellToDelete.item.count -= count;
+  
+  if(cellToDelete.item.count <= 0) {
+    cellToDelete.item = null;
+    selectedCell.value = null;
+  }
 }
 </script>
 
