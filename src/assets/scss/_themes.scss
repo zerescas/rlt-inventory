@@ -1,8 +1,13 @@
 @use 'sass:color';
 
+/* Dark properties */
 $dark-background-card: #262626;
 
-// Dark theme
+// Buttons
+$dark-button: #fff;
+$dark-button-primary: #fa7272;
+
+/* Map */
 $dark: (
   color: (
     background: '#1d1d1d',
@@ -15,6 +20,15 @@ $dark: (
     background-skeleton-3: '#333333',
     text-primary: '#FFFFFF',
     border: '#4D4D4D',
+
+    // Button
+    button: #fff,
+    button-hover: #fff,
+    button-text: #000,
+    // Button primary
+    button-primary: #fa7272,
+    button-primary-hover: #f88,
+    button-primary-text: #fff,
   ),
 );
 

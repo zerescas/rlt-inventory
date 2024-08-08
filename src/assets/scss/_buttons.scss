@@ -1,0 +1,29 @@
+@use 'mixins/button';
+
+.button {
+  @include button.define-button(
+    --theme-color-button,
+    --theme-color-button-hover,
+    --theme-color-button-text
+  );
+
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  height: 33px;
+  outline: none;
+  padding: 0 16px;
+}
+
+.button-primary {
+  @include button.define-button(
+    --theme-color-button-primary,
+    --theme-color-button-primary-hover,
+    --theme-color-button-primary-text
+  );
+}
+
+.button-size-m {
+  height: 39px;
+}
