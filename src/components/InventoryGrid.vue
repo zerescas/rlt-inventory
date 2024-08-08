@@ -40,12 +40,22 @@ for (let i = 0; i < 25; i++) {
 }
 
 /* Cell selection */
-const selectedCell = ref<GridCell>();
+const selectedCell = ref<GridCell | null>();
 
 function selectCell(cell: GridCell) {
   if (cell.item === null) return;
 
   selectedCell.value = cell;
+}
+
+/* Cell actions */
+function deleteItemInCell(cell: GridCell) {
+  const cellToDelete = cells.value.find((c) => cell === c);
+
+  if (!cellToDelete) return;
+
+  cellToDelete.item = null;
+  selectedCell.value = null;
 }
 </script>
 
@@ -62,7 +72,7 @@ function selectCell(cell: GridCell) {
     </div>
 
     <div class="modal-card" v-if="selectedCell?.item">
-      <InventoryGridItemDetailsModal :item="selectedCell?.item" />
+      <InventoryGridItemDetailsModal :cell="selectedCell" @deleteItem="deleteItemInCell" />
     </div>
   </div>
 </template>

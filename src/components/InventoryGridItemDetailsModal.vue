@@ -1,23 +1,27 @@
 <script setup lang="ts">
 import type { PropType } from 'vue';
-import type { GridCellItem } from '@/types/inventory/grid-cell-item';
+import type { GridCell } from '@/types/inventory/grid-cell';
 import { useInventoryItemDetailStore } from '@/stores/inventoryItemDetail';
 import AnimatedPlaceholder from './AnimatedPlaceholder.vue';
 
 const inventoryItemDetailStore = useInventoryItemDetailStore();
 
 defineProps({
-  item: {
-    type: Object as PropType<GridCellItem>,
+  cell: {
+    type: Object as PropType<GridCell>,
     required: true,
   },
 });
+
+const emit = defineEmits<{
+  (e: 'deleteItem', cell: GridCell): void;
+}>();
 </script>
 
 <template>
   <div class="inventory-grid-item-details-modal">
     <div class="header">
-      <img class="item-image" :src="item && inventoryItemDetailStore.getImageByCode(item.code)">
+      <img class="item-image" :src="inventoryItemDetailStore.getImageByCode(cell.item!.code)" />
     </div>
 
     <div class="content skeleton">
@@ -34,6 +38,10 @@ defineProps({
       </p>
     </div>
 
-    <div class="footer">Actions</div>
+    <div class="footer">
+      <button class="button button-primary button-size-m" @click="emit('deleteItem', cell!)">
+        Удалить предмет
+      </button>
+    </div>
   </div>
 </template>
