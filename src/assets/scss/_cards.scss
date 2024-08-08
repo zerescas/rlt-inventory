@@ -9,6 +9,7 @@
     @extend %base-card;
 
     overflow: hidden;
+    position: relative;
 
     .cells {
       background-color: var(--theme-color-border);
@@ -17,6 +18,21 @@
       grid-template-columns: repeat(5, minmax(0, 1fr));
       grid-template-rows: repeat(5, minmax(0, 1fr));
       height: 100%;
+    }
+
+    .modal-card {
+      @extend %base-card;
+
+      backdrop-filter: blur(16px);
+      background-color: var(--theme-color-background-card-semi-transparent);
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      bottom: 0;
+      padding: 15px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 250px;
     }
   }
 
@@ -33,7 +49,7 @@
     &.selected {
       background-color: var(--theme-color-background-card-selected);
     }
-    
+
     &.dropzone {
       background-color: white;
     }

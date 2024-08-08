@@ -59,5 +59,9 @@ function selectCell(cell: GridCell) {
         @click="selectCell(cell)"
       />
     </div>
+
+    <div class="modal-card" v-if="selectedCell?.item">
+      Inventory Grid Modal Card
+    </div>
   </div>
 </template>
