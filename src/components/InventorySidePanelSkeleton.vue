@@ -7,7 +7,7 @@ import skeletonHeaderImage from '@/assets/img/sidepanel/skeleton.png';
   <div class="inventory-sidepanel-card skeleton">
     <div class="header">
       <img :src="skeletonHeaderImage" alt="skeleton-img" />
-      <AnimatedPlaceholder width="190px" height="26px" />
+      <AnimatedPlaceholder width="190px" height="26px" borderRadius="8px" />
     </div>
 
     <div class="content">
