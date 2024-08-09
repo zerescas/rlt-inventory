@@ -29,3 +29,12 @@
 .button-size-m {
   height: 39px;
 }
+
+.icon-button {
+  background-color: transparent;
+  border: none;
+  color: var(--primary-text);
+  cursor: pointer;
+  outline: none;
+  padding: 6px;
+}
