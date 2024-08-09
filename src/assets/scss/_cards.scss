@@ -218,4 +218,15 @@
   @extend %base-card;
 
   padding: 16px 23px;
+  position: relative;
+
+  .content {
+    width: 92%;
+  }
+}
+
+.card-close-button {
+  position: absolute;
+  right: 6px;
+  top: 6px;
 }
