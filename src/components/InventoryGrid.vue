@@ -75,12 +75,14 @@ function deleteItemInCell(cell: GridCell, count: number) {
       />
     </div>
 
-    <div class="modal-card" v-if="selectedCell?.item">
-      <InventoryGridItemDetailsModal
-        :cell="selectedCell"
-        @deleteItem="deleteItemInCell"
-        @unSelectItem="selectedCell = null"
-      />
-    </div>
+    <Transition name="slide-from-left">
+      <div class="modal-card" v-if="selectedCell?.item">
+        <InventoryGridItemDetailsModal
+          :cell="selectedCell"
+          @deleteItem="deleteItemInCell"
+          @unSelectItem="selectedCell = null"
+        />
+      </div>
+    </Transition>
   </div>
 </template>
