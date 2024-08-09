@@ -3,6 +3,7 @@ import { ref, type PropType } from 'vue';
 import type { GridCell } from '@/types/inventory/grid-cell';
 import { useInventoryItemDetailStore } from '@/stores/inventoryItemDetail';
 import AnimatedPlaceholder from './AnimatedPlaceholder.vue';
+import IconClose from './icons/IconClose.vue';
 
 const inventoryItemDetailStore = useInventoryItemDetailStore();
 
@@ -15,6 +16,7 @@ const props = defineProps({
 
 const emit = defineEmits<{
   (e: 'deleteItem', cell: GridCell, count: number): void;
+  (e: 'unSelectItem'): void;
 }>();
 
 const isShowDeleteConfirm = ref(false);
@@ -32,6 +34,10 @@ function deleteItem() {
 
 <template>
   <div class="inventory-grid-item-details-modal">
+    <button class="icon-button card-close-button" @click="emit('unSelectItem')">
+      <IconClose />
+    </button>
+
     <div class="header">
       <img class="item-image" :src="inventoryItemDetailStore.getImageByCode(cell.item!.code)" />
     </div>
