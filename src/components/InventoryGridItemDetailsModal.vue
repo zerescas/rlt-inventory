@@ -61,18 +61,16 @@ function deleteItem() {
         Удалить предмет
       </button>
 
-      <div v-if="isShowDeleteConfirm" class="delete-confirmation-card">
-        <input
-          class="input"
-          v-model="countToDelete"
-          placeholder="Введите количество"
-        />
+      <Transition name="slide-from-bottom">
+        <div v-if="isShowDeleteConfirm" class="delete-confirmation-card">
+          <input class="input" v-model="countToDelete" placeholder="Введите количество" />
 
-        <div class="buttons">
-          <button class="button button" @click="isShowDeleteConfirm = false">Отмена</button>
-          <button class="button button-primary" @click="deleteItem">Подтвердить</button>
+          <div class="buttons">
+            <button class="button button" @click="isShowDeleteConfirm = false">Отмена</button>
+            <button class="button button-primary" @click="deleteItem">Подтвердить</button>
+          </div>
         </div>
-      </div>
+      </Transition>
     </div>
   </div>
 </template>
