@@ -1,3 +1,4 @@
+/* slide-from-left */ 
 .slide-from-left-enter-active,
 .slide-from-left-leave-active {
   transition: transform 0.25s ease;
@@ -6,4 +7,15 @@
 .slide-from-left-enter-from,
 .slide-from-left-leave-to {
   transform: translateX(100%);
+}
+
+/* slide-from-bottom */ 
+.slide-from-bottom-enter-active,
+.slide-from-bottom-leave-active {
+  transition: transform 0.25s ease;
+}
+
+.slide-from-bottom-enter-from,
+.slide-from-bottom-leave-to {
+  transform: translateY(100%);
 }
