@@ -7,13 +7,15 @@
     --theme-color-button-text
   );
 
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  height: 33px;
-  outline: none;
-  padding: 0 16px;
+  & {
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 33px;
+    outline: none;
+    padding: 0 16px;
+  }
 }
 
 .button-primary {
