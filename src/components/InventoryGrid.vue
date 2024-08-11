@@ -27,16 +27,14 @@ for (let i = 0; i < 25; i++) {
   cells.value.push(obj);
 }
 
-/* Cell selection */
+/* Cell actions */
 const selectedCell = ref<GridCell | null>();
-
 function selectCell(cell: GridCell) {
   if (cell.item === null) return;
 
   selectedCell.value = cell;
 }
 
-/* Cell actions */
 function deleteItemInCell(cell: GridCell, count: number) {
   const cellToDelete = cells.value.find((c) => cell === c);
 
@@ -59,6 +57,14 @@ function deleteItemInCell(cell: GridCell, count: number) {
         :key="cell.id"
         :cell
         :class="{ selected: selectedCell === cell }"
+        :draggable="{
+          handleDragStart: (draggable) => {
+            const isCellEmpty = draggable.item.value.item == null;
+            if(isCellEmpty) return false;
+            
+            selectedCell = null;
+          },
+        }"
         @click="selectCell(cell)"
       />
     </div>
