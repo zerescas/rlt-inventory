@@ -15,16 +15,52 @@ $dark: (
     background-card-semi-transparent: color.adjust($dark-background-card, $alpha: -0.5),
     background-card-hover: #2f2f2f,
     background-card-selected: #2f2f2f,
-    background-skeleton-1: #3C3C3C,
+    background-skeleton-1: #3c3c3c,
     background-skeleton-2: #444,
     background-skeleton-3: #333,
-    text-primary: #FFF,
-    border: #4D4D4D,
+    text-primary: #fff,
+    border: #4d4d4d,
+
+    shadow-dragging-card: color.adjust(#fff, $alpha: -0.7),
 
     // Button
     button: #fff,
     button-hover: #fff,
     button-text: #000,
+    // Button primary
+    button-primary: #fa7272,
+    button-primary-hover: #f88,
+    button-primary-text: #fff,
+  ),
+);
+
+/* Light properties */
+$light-background-card: #d9d9d9;
+
+// Buttons
+$light-button: #000;
+$light-button-primary: #fa7272;
+
+/* Map */
+$light: (
+  color: (
+    background: #e2e2e2,
+    background-card: $light-background-card,
+    background-card-semi-transparent: color.adjust($light-background-card, $alpha: -0.5),
+    background-card-hover: #d0d0d0,
+    background-card-selected: #d0d0d0,
+    background-skeleton-1: #c3c3c3,
+    background-skeleton-2: #bbb,
+    background-skeleton-3: #ccc,
+    text-primary: #0f0f0f,
+    border: #b2b2b2,
+
+    shadow-dragging-card: color.adjust(#000, $alpha: -0.5),
+
+    // Button
+    button: #313131,
+    button-hover: #313131,
+    button-text: #fff,
     // Button primary
     button-primary: #fa7272,
     button-primary-hover: #f88,
