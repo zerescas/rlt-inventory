@@ -17,6 +17,11 @@ const props = defineProps<{
   dropzone?: DropzoneEventHandlers<GridCell>;
 }>();
 
+const image = computed(() => {
+  if (!props.cell.item) return '';
+  return inventoryItemDetailStore.getImageByCode(props.cell.item.code)
+});
+
 const [initDrag, draggable] = useDrag<GridCell>({
   type: 'inventory-grid-cell',
   item: props.cell,
@@ -43,7 +48,7 @@ const [initDrop, dropzone] = useDrop({
     class="inventory-grid-cell-card"
   >
     <div class="item" v-if="cell?.item">
-      <img class="image" :src="inventoryItemDetailStore.getImageByCode(cell.item.code)" />
+      <img class="image" :src="image" />
 
       <div class="count">
         {{ cell.item.count }}
