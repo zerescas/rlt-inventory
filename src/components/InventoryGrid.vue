@@ -1,24 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { swap } from '@formkit/drag-and-drop';
-import { useDragAndDrop } from '@formkit/drag-and-drop/vue';
 import InventoryGridCell from './InventoryGridCell.vue';
 import InventoryGridItemDetailsModal from './InventoryGridItemDetailsModal.vue';
-import { usePreventDrag } from '@/composable/usePreventDrag';
 import type { GridCell } from '@/types/inventory/grid-cell';
 
-/* Init Drag'n Drop behavior */
-const [cellsRef, cells] = useDragAndDrop<GridCell>([], {
-  // Prevent drag if cell hasn't any item
-  ...usePreventDrag((targetData) => targetData.node.data.value?.item === null),
+/* Init and fill cells with placeholder data */
+const cells = ref<GridCell[]>([]);
 
-  dropZoneClass: 'dropzone',
-  touchDropZoneClass: 'dropzone',
-
-  plugins: [swap()],
-});
-
-/* Fill cells with placeholder data */
 for (let i = 0; i < 25; i++) {
   let obj: GridCell = {
     id: i,
@@ -39,16 +27,14 @@ for (let i = 0; i < 25; i++) {
   cells.value.push(obj);
 }
 
-/* Cell selection */
+/* Cell actions */
 const selectedCell = ref<GridCell | null>();
-
 function selectCell(cell: GridCell) {
   if (cell.item === null) return;
 
   selectedCell.value = cell;
 }
 
-/* Cell actions */
 function deleteItemInCell(cell: GridCell, count: number) {
   const cellToDelete = cells.value.find((c) => cell === c);
 
@@ -65,12 +51,20 @@ function deleteItemInCell(cell: GridCell, count: number) {
 
 <template>
   <div class="inventory-grid-card">
-    <div ref="cellsRef" class="cells">
+    <div class="cells">
       <InventoryGridCell
         v-for="cell in cells"
         :key="cell.id"
         :cell
         :class="{ selected: selectedCell === cell }"
+        :draggable="{
+          handleDragStart: (draggable) => {
+            const isCellEmpty = draggable.item.value.item == null;
+            if(isCellEmpty) return false;
+            
+            selectedCell = null;
+          },
+        }"
         @click="selectCell(cell)"
       />
     </div>
