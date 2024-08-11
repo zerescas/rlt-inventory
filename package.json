@@ -15,7 +15,6 @@
     "stylelint-fix": "stylelint \"./src/**/*.{css,scss,sass,vue}\" --fix"
   },
   "dependencies": {
-    "@formkit/drag-and-drop": "^0.1.6",
     "@vueuse/core": "^10.11.1",
     "pinia": "^2.1.7",
     "vue": "^3.4.29"
