@@ -1,31 +1,33 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import InventoryGridCell from './InventoryGridCell.vue';
 import InventoryGridItemDetailsModal from './InventoryGridItemDetailsModal.vue';
 import type { GridCell } from '@/types/inventory/grid-cell';
+import { useInventoryItemStore } from '@/stores/inventoryItem';
 
-/* Init and fill cells with placeholder data */
+const inventoryItemStore = useInventoryItemStore();
+
+/* Init cells */
+// Create empty cells
 const cells = ref<GridCell[]>([]);
 
 for (let i = 0; i < 25; i++) {
   let obj: GridCell = {
     id: i,
-    item: {
-      code: 'green-box',
-      count: i,
-    },
+    item: null,
   };
-
-  if (i > 3 && i < 7) {
-    obj.item!.code = 'golden-box';
-  } else if (i >= 7 && i < 13) {
-    obj.item!.code = 'blue-box';
-  } else if (i >= 13) {
-    obj.item = null;
-  }
-
   cells.value.push(obj);
 }
+
+// Attempt to load items from localStorage and place by cells
+inventoryItemStore.loadFromLocalStorage().forEach((loadedCell) => {
+  cells.value[loadedCell.id].item = loadedCell.item;
+});
+
+// Watch for cells changes and save items to localStorage
+watch(cells.value, () => {
+  inventoryItemStore.saveToLocalStorage(cells.value);
+});
 
 /* Cell actions */
 const selectedCell = ref<GridCell | null>();
@@ -60,8 +62,8 @@ function deleteItemInCell(cell: GridCell, count: number) {
         :draggable="{
           handleDragStart: (draggable) => {
             const isCellEmpty = draggable.item.value.item == null;
-            if(isCellEmpty) return false;
-            
+            if (isCellEmpty) return false;
+
             selectedCell = null;
           },
         }"
