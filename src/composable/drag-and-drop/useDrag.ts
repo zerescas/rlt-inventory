@@ -166,7 +166,7 @@ export const useDrag = <T>(
   let dragLongPressTimer: number | undefined = 0;
 
   /* Watch for mouse press state changes to start or end drag */
-  watch(pressed, (_pressed) => (_pressed ? startDrag() : endDrag()));
+  watch(pressed, (_pressed) => (_pressed ? setTimeout(() => startDrag(), 0) : endDrag()));
 
   /**
    * Start the drag operation
