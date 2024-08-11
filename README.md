@@ -1,6 +1,6 @@
 # rlt-inventory
 
-This template should help get you started developing with Vue 3 in Vite.
+A small project that turned into Drag and Drop hell and birth of "Yet Another Vue Drag-and-Drop (YAVDnD)" [More info about YAVDnD](./src/composable/drag-and-drop/README.md)
 
 ## Recommended IDE Setup
 
@@ -36,4 +36,16 @@ npm run build
 
 ```sh
 npm run lint
+```
+
+### Lint with [Stylelint](https://stylelint.io/)
+
+To check and display issues:
+```sh
+npm run stylelint
+```
+
+To check and autofix:
+```sh
+npm run stylelint
 ```
