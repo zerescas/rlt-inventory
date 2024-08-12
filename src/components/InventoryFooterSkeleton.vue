@@ -9,7 +9,7 @@ import IconClose from './icons/IconClose.vue';
       <AnimatedPlaceholder width="100%" height="36px" borderRadius="12px" />
     </div>
 
-    <button class="icon-button card-close-button">
+    <button class="icon-button card-close-button" aria-label="close">
       <IconClose />
     </button>
   </div>

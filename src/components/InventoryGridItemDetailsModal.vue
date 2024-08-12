@@ -34,7 +34,7 @@ function deleteItem() {
 
 <template>
   <div class="inventory-grid-item-details-modal">
-    <button class="icon-button card-close-button" @click="emit('unSelectItem')">
+    <button class="icon-button card-close-button" aria-label="close" @click="emit('unSelectItem')">
       <IconClose />
     </button>
 
