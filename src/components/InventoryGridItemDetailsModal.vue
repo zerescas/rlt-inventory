@@ -63,7 +63,12 @@ function deleteItem() {
 
       <Transition name="slide-from-bottom">
         <div v-if="isShowDeleteConfirm" class="delete-confirmation-card">
-          <input class="input" v-model="countToDelete" placeholder="Введите количество" />
+          <input
+            class="input"
+            v-model="countToDelete"
+            placeholder="Введите количество"
+            @keyup.enter.exact="deleteItem"
+          />
 
           <div class="buttons">
             <button class="button button" @click="isShowDeleteConfirm = false">Отмена</button>
