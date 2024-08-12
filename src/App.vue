@@ -31,7 +31,7 @@ const { stateString, next } = toRefs(useThemeStore());
 
 .inventory {
   display: grid;
-  gap: 32px;
+  gap: 24px;
   grid-template: 500px 72px / 236px 525px;
   grid-template-areas:
     'inventory-sidepanel inventory-grid'
