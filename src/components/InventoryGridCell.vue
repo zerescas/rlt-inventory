@@ -48,7 +48,7 @@ const [initDrop, dropzone] = useDrop({
     class="inventory-grid-cell-card"
   >
     <div class="item" v-if="cell?.item">
-      <img class="image" :src="image" />
+      <img class="image" :src="image" alt="item-img" />
 
       <div class="count">
         {{ cell.item.count }}
