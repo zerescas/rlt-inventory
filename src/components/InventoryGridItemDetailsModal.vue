@@ -23,7 +23,7 @@ const isShowDeleteConfirm = ref(false);
 const countToDelete = ref<number | string>('');
 
 function deleteItem() {
-  if (+countToDelete.value <= 0) return;
+  if (!Number.isInteger(+countToDelete.value) || +countToDelete.value <= 0) return;
 
   emit('deleteItem', props.cell, +countToDelete.value);
 
