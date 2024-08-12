@@ -1,14 +1,18 @@
 @use './themes';
 
-:root {
-  @include themes.define-theme(themes.$dark);
-}
-
 * {
   box-sizing: border-box;
   font-family: Inter, 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+html.light {
+  @include themes.define-theme(themes.$light);
+}
+
+html.dark {
+  @include themes.define-theme(themes.$dark);
 }
 
 body {
