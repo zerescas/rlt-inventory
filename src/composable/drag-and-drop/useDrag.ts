@@ -166,7 +166,7 @@ export const useDrag = <T>(
   let dragLongPressTimer: number | undefined = 0;
 
   /* Watch for mouse press state changes to start or end drag */
-  watch(pressed, (_pressed) => (_pressed ? setTimeout(() => startDrag(), 0) : endDrag()));
+  watch(pressed, (_pressed) => (_pressed ? setTimeout(() => startDrag(), 0) : setTimeout(() => endDrag(), 0)));
 
   /**
    * Start the drag operation
@@ -285,6 +285,8 @@ export const useDrag = <T>(
   // Provide the function to init drag and the draggable state
   return [
     (el: HTMLElement) => {
+      el.style.touchAction = 'none';
+
       elementRef.value = el;
       return el;
     },
